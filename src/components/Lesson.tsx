@@ -13,6 +13,10 @@ interface LessonProps {
 
 export function Lesson(props: LessonProps) {
 
+    function reload(){
+        location.reload()
+    }
+
     const {slug} = useParams<{slug: string}>()
 
     const isLessonAvailable = isPast(props.availableAt);  // o isPast verifica se a data recebida já passou da data atual
@@ -23,7 +27,7 @@ export function Lesson(props: LessonProps) {
     const isActiveLesson = slug === props.slug
 
     return(
-        <Link to={`/event/lesson/${props.slug}`} onClick={location.reload} className='group'> 
+        <Link to={`/event/lesson/${props.slug}`} onClick={reload} className='group'> 
             <span className="text-gray-300">
                 {availableAtFormatted} 
             </span>
